@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {TextInput, StyleSheet, Text, View, Image} from 'react-native';
 import 'crypto-js/lib-typedarrays';
 import 'amazon-cognito-identity-js';

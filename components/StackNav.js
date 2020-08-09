@@ -10,7 +10,7 @@ import Profile from './Profile';
 const StackNav = createStackNavigator();
 
 const StackNavScreen = ({navigation}) => (
-  <StackNav.Navigator headerMode={'none'} initialRouteName="SignIn">
+  <StackNav.Navigator headerMode={'none'}>
     <StackNav.Screen name="TabNavigator" component={BottomTabNavigator} />
     <StackNav.Screen
       name="SignIn"
