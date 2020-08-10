@@ -11,7 +11,6 @@ import {
   ScrollView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import BottomTabNavigator from './TabNavigator';
 
 //function Profile({navigation})
 export default class Profile extends Component {

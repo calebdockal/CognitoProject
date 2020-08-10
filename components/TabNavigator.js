@@ -7,10 +7,10 @@ import Ionicons from 'react-native-vector-icons/dist/Ionicons';
 import FontAwesome from 'react-native-vector-icons/dist/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/dist/MaterialIcons';
 import Profile from './Profile';
-import dummy1 from './dummy1';
-import dummy2 from './dummy2';
-import dummy3 from './dummy3';
-import dummy4 from './dummy4';
+import dummy1 from './dummyscreens/dummy1';
+import dummy2 from './dummyscreens/dummy2';
+import dummy3 from './dummyscreens/dummy3';
+import dummy4 from './dummyscreens/dummy4';
 
 const Tab = createBottomTabNavigator();
 

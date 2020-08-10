@@ -13,8 +13,10 @@ import {Auth} from 'aws-amplify';
 import {Input, Button} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {handleSignUp} from './redux/user/Actions';
+import {connect} from 'react-redux';
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,33 +40,7 @@ export default class SignUp extends React.Component {
     console.log('key - ', key);
     console.log('value -', value);
   }
-  handleSignUp = () => {
-    const {
-      email,
-      password,
-      confirmPassword,
-      birthdate,
-      gender,
-      given_name,
-    } = this.state;
 
-    if (password === confirmPassword) {
-      Auth.signUp({
-        username: email,
-        password,
-        attributes: {
-          given_name,
-          email,
-          birthdate,
-          gender,
-        },
-      })
-        .then(() => this.setState({modalVisible: true}))
-        .catch((err) => console.log(err));
-    } else {
-      alert('Passwords do not match.');
-    }
-  };
   // Allowing user to confirm email with code
   handleConfirmationCode = () => {
     const {email, confirmationCode} = this.state;
@@ -127,7 +103,7 @@ export default class SignUp extends React.Component {
             placeholder="***************"
           />
           <TouchableOpacity
-            onPress={this.handleSignUp}
+            onPress={handleSignUp}
             style={{
               backgroundColor: '#2bcaff',
               borderRadius: 30,
@@ -191,3 +167,11 @@ const styles = StyleSheet.create({
   },
   titleStyle: {fontWeight: 'bold', fontSize: 19},
 });
+
+const mapStateToProps = (state) => {
+  return {
+    state: state,
+  };
+};
+
+export default connect(mapStateToProps, {handleSignUp})(SignUp);

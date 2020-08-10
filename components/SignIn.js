@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {TextInput, StyleSheet, Text, View, Image} from 'react-native';
 import 'crypto-js/lib-typedarrays';
 import 'amazon-cognito-identity-js';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Button, Input} from 'react-native-elements';
 import {Auth} from 'aws-amplify';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-
-import BottomTabNavigator from './TabNavigator';
 export default class SignIn extends React.Component {
   constructor(props) {
     super(props);
