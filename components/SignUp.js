@@ -13,6 +13,8 @@ import {Auth} from 'aws-amplify';
 import {Input, Button} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {handleSignUp} from './redux/user/Actions';
+import {Provider} from 'react-redux';
+import {connect} from 'react-redux';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -55,100 +57,102 @@ class SignUp extends React.Component {
   };
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView>
-          <Text style={{fontWeight: 'bold', fontSize: 30, marginBottom: 40}}>
-            Register
-          </Text>
-          <Text style={styles.titleStyle}>Full Name :</Text>
-          <TextInput
-            onChangeText={(value) => this.setState({given_name: value})}
-            style={styles.input}
-            placeholder="John Doe"
-          />
-          <Text style={styles.titleStyle}>Email :</Text>
-          <TextInput
-            onChangeText={(value) => this.setState({email: value})}
-            style={styles.input}
-            placeholder="John@email.com"
-          />
-          <Text style={styles.titleStyle}>Date of Birth :</Text>
-          <Input
-            rightIcon={{type: 'font-awesome', name: 'calendar'}}
-            onChangeText={(value) => this.setState({birthdate: value})}
-          />
-          <Text style={styles.titleStyle}>Gender :</Text>
-          <TextInput
-            onChangeText={(value) => this.setState({gender: value})}
-            style={styles.input}
-            placeholder="Male, Female, etc."
-          />
-          <Text style={styles.titleStyle}>Password :</Text>
-          <TextInput
-            onChangeText={(value) => this.setState({password: value})}
-            style={styles.input}
-            secureTextEntry={true}
-            placeholder="***************"
-          />
-          <Text style={styles.titleStyle}>Confirm Password :</Text>
-          <TextInput
-            onChangeText={(value) => this.setState({confirmPassword: value})}
-            style={{
-              height: 50,
-              borderRadius: 20,
-              backgroundColor: '#f0eded',
-              margin: 10,
-              opacity: 0.9,
-              marginBottom: 75,
-            }}
-            secureTextEntry={true}
-            placeholder="***************"
-          />
-          <TouchableOpacity
-            onPress={handleSignUp()}
-            style={{
-              backgroundColor: '#2bcaff',
-              borderRadius: 30,
-              padding: 15,
-              marginBottom: 20,
-              elevation: 5,
-              shadowColor: 'gray',
-              shadowOffset: {height: 5, width: 5},
-              shadowRadius: 5,
-              shadowOpacity: 1,
-            }}>
-            <Text style={{alignSelf: 'center', color: 'white', fontSize: 20}}>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <ScrollView>
+            <Text style={{fontWeight: 'bold', fontSize: 30, marginBottom: 40}}>
               Register
             </Text>
-          </TouchableOpacity>
-          <Modal visible={this.state.modalVisible}>
-            <View>
-              <Input
-                label="confirmation code"
-                leftIcon={{type: 'font-awesome', name: 'lock'}}
-                onChangeText={(value) =>
-                  this.setState({confirmationCode: value})
-                }
-              />
-              <Button title="Submit" onPress={this.handleConfirmationCode} />
-            </View>
-          </Modal>
-
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'center',
-              marginBottom: 10,
-            }}>
-            <Text style={{marginTop: 2}}>Already have an account?</Text>
+            <Text style={styles.titleStyle}>Full Name :</Text>
+            <TextInput
+              onChangeText={(value) => this.setState({given_name: value})}
+              style={styles.input}
+              placeholder="John Doe"
+            />
+            <Text style={styles.titleStyle}>Email :</Text>
+            <TextInput
+              onChangeText={(value) => this.setState({email: value})}
+              style={styles.input}
+              placeholder="John@email.com"
+            />
+            <Text style={styles.titleStyle}>Date of Birth :</Text>
+            <Input
+              rightIcon={{type: 'font-awesome', name: 'calendar'}}
+              onChangeText={(value) => this.setState({birthdate: value})}
+            />
+            <Text style={styles.titleStyle}>Gender :</Text>
+            <TextInput
+              onChangeText={(value) => this.setState({gender: value})}
+              style={styles.input}
+              placeholder="Male, Female, etc."
+            />
+            <Text style={styles.titleStyle}>Password :</Text>
+            <TextInput
+              onChangeText={(value) => this.setState({password: value})}
+              style={styles.input}
+              secureTextEntry={true}
+              placeholder="***************"
+            />
+            <Text style={styles.titleStyle}>Confirm Password :</Text>
+            <TextInput
+              onChangeText={(value) => this.setState({confirmPassword: value})}
+              style={{
+                height: 50,
+                borderRadius: 20,
+                backgroundColor: '#f0eded',
+                margin: 10,
+                opacity: 0.9,
+                marginBottom: 75,
+              }}
+              secureTextEntry={true}
+              placeholder="***************"
+            />
             <TouchableOpacity
-              style={{marginLeft: 10}}
-              onPress={() => this.props.navigation.navigate('SignIn')}>
-              <Text style={{fontWeight: 'bold', fontSize: 17}}>Login</Text>
+              onPress={handleSignUp()}
+              style={{
+                backgroundColor: '#2bcaff',
+                borderRadius: 30,
+                padding: 15,
+                marginBottom: 20,
+                elevation: 5,
+                shadowColor: 'gray',
+                shadowOffset: {height: 5, width: 5},
+                shadowRadius: 5,
+                shadowOpacity: 1,
+              }}>
+              <Text style={{alignSelf: 'center', color: 'white', fontSize: 20}}>
+                Register
+              </Text>
             </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </View>
+            <Modal visible={this.state.modalVisible}>
+              <View>
+                <Input
+                  label="confirmation code"
+                  leftIcon={{type: 'font-awesome', name: 'lock'}}
+                  onChangeText={(value) =>
+                    this.setState({confirmationCode: value})
+                  }
+                />
+                <Button title="Submit" onPress={this.handleConfirmationCode} />
+              </View>
+            </Modal>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginBottom: 10,
+              }}>
+              <Text style={{marginTop: 2}}>Already have an account?</Text>
+              <TouchableOpacity
+                style={{marginLeft: 10}}
+                onPress={() => this.props.navigation.navigate('SignIn')}>
+                <Text style={{fontWeight: 'bold', fontSize: 17}}>Login</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
+      </Provider>
     );
     console.log('everything went through');
   }
@@ -170,3 +174,20 @@ const styles = StyleSheet.create({
   },
   titleStyle: {fontWeight: 'bold', fontSize: 19},
 });
+const mapStateToProps = (state) => {
+  return {
+    state: state.userReducer,
+  };
+};
+console.log();
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: (user) => {
+      dispatch(userReducer());
+      console.log('dispatch went through');
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+console.log('state connected');
