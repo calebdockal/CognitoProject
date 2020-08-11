@@ -16,8 +16,7 @@ const initialState = {
   modalVisible: false,
 };
 
-export const rootReducer = (state = initialState, action) => {
-  console.log(state, action);
+export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case HANDLE_SIGNUP_SUCCESS:
       return {

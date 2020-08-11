@@ -7,10 +7,10 @@ import 'amazon-cognito-identity-js';
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {Provider} from 'react-redux';
-import {store} from './components/redux/user/Store';
+import configureStore from './components/redux/user/Store';
 
 Amplify.configure(awsconfig);
-
+const store = configureStore();
 export default class App extends React.Component {
   state = {isAuthenticated: false};
   authenticate = (isAuthenticated) => {

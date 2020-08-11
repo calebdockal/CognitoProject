@@ -111,7 +111,7 @@ export default class SignIn extends React.Component {
           style={{flexDirection: 'row', justifyContent: 'center', margin: 10}}>
           <Text style={{fontSize: 15}}>or </Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Register')}>
+            onPress={() => this.props.navigation.navigate('SignUp')}>
             <Text style={{fontWeight: 'bold', fontSize: 15}}>
               Register with your email
             </Text>

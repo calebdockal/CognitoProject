@@ -16,6 +16,7 @@ export const HANDLE_SIGNUP_REQUEST_Function = () => ({
 export const HANDLE_SIGNUP_ERROR_Function = () => ({type: HANDLE_SIGNUP_ERROR});
 
 export function handleSignUp() {
+  // console.log('what is going on?');
   return (dispatch) => {
     try {
       dispatch({type: 'HANDLE_SIGNUP_REQUEST'});
@@ -29,8 +30,10 @@ export function handleSignUp() {
             birthdate,
             gender,
           },
-        }).then(() => dispatch({type: 'HANDLE_SIGNUP_SUCCESS'}));
+        }).then((res) => dispatch({type: 'HANDLE_SIGNUP_SUCCESS'}));
+        console.log('all good here');
       } else {
+        console.log('nope');
         alert('Passwords do not match.');
       }
     } catch (error) {

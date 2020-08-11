@@ -17,7 +17,7 @@ const StackNavScreen = ({navigation}) => (
       component={SignIn}
       options={{title: 'SignIn'}}
     />
-    <StackNav.Screen name="Register" component={SignUp} />
+    <StackNav.Screen name="SignUp" component={SignUp} />
   </StackNav.Navigator>
 );
 

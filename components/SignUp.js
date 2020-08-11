@@ -15,11 +15,13 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {handleSignUp} from './redux/user/Actions';
 import {connect} from 'react-redux';
+import {userReducer} from './redux/user/Reducers';
+import App from '../App';
 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    state = {
       username: '',
       given_name: '',
       password: '',
@@ -103,7 +105,7 @@ class SignUp extends React.Component {
             placeholder="***************"
           />
           <TouchableOpacity
-            onPress={props.handleSignUp}
+            onPress={handleSignUp()}
             style={{
               backgroundColor: '#2bcaff',
               borderRadius: 30,
@@ -170,8 +172,16 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    state: state,
+    state: state.userReducer,
   };
 };
 
-export default connect(mapStateToProps, {handleSignUp})(SignUp);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: (user) => {
+      dispatch(userReducer());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
