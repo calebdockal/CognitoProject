@@ -103,7 +103,7 @@ class SignUp extends React.Component {
             placeholder="***************"
           />
           <TouchableOpacity
-            onPress={this.props.handleSignUp}
+            onPress={props.handleSignUp}
             style={{
               backgroundColor: '#2bcaff',
               borderRadius: 30,

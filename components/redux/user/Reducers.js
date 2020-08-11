@@ -17,6 +17,7 @@ const initialState = {
 };
 
 export const rootReducer = (state = initialState, action) => {
+  console.log(state, action);
   switch (action.type) {
     case HANDLE_SIGNUP_SUCCESS:
       return {
@@ -28,7 +29,6 @@ export const rootReducer = (state = initialState, action) => {
         birthdate: '',
         email: '',
         gender: '',
-        confirmationCode: '',
         modalVisible: false,
       };
     case HANDLE_SIGNUP_ERROR:
@@ -36,4 +36,5 @@ export const rootReducer = (state = initialState, action) => {
     case HANDLE_SIGNUP_REQUEST:
       return {...state};
   }
+  return state;
 };
