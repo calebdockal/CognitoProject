@@ -8,10 +8,12 @@ import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 import {Provider} from 'react-redux';
 import configureStore from './components/redux/user/Store';
+import {connect} from 'react-redux';
+import {userReducer} from './components/redux/user/Reducers';
 
 Amplify.configure(awsconfig);
 const store = configureStore();
-export default class App extends React.Component {
+class App extends React.Component {
   state = {isAuthenticated: false};
   authenticate = (isAuthenticated) => {
     this.setState({isAuthenticated});
@@ -28,3 +30,22 @@ export default class App extends React.Component {
   }
 }
 const styles = StyleSheet.create({});
+
+const mapStateToProps = (state) => {
+  return {
+    state: state.userReducer,
+  };
+  console.log('state mapped');
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    add: (user) => {
+      dispatch(userReducer());
+      console.log('dispatch went through');
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+console.log('state connected');

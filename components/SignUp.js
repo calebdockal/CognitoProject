@@ -12,11 +12,7 @@ import 'amazon-cognito-identity-js';
 import {Auth} from 'aws-amplify';
 import {Input, Button} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {handleSignUp} from './redux/user/Actions';
-import {connect} from 'react-redux';
-import {userReducer} from './redux/user/Reducers';
-import App from '../App';
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -46,12 +42,16 @@ class SignUp extends React.Component {
   // Allowing user to confirm email with code
   handleConfirmationCode = () => {
     const {email, confirmationCode} = this.state;
+    console.log('set state');
     Auth.confirmSignUp(email, confirmationCode, {})
       .then(() => {
         this.setState({modalVisible: false});
+        console.log('modal is false');
         this.props.navigation.navigate('SignIn');
+        console.log('navigated to sign in');
       })
       .catch((err) => console.log(err));
+    console.log('received error');
   };
   render() {
     return (
@@ -150,6 +150,7 @@ class SignUp extends React.Component {
         </ScrollView>
       </View>
     );
+    console.log('everything went through');
   }
 }
 
@@ -169,19 +170,3 @@ const styles = StyleSheet.create({
   },
   titleStyle: {fontWeight: 'bold', fontSize: 19},
 });
-
-const mapStateToProps = (state) => {
-  return {
-    state: state.userReducer,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    add: (user) => {
-      dispatch(userReducer());
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
