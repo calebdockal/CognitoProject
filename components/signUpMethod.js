@@ -6,19 +6,23 @@ import {
 } from './redux/user/Actions';
 import configureStore from './redux/user/Store';
 
-signUpMethod = () => {
-  handleSignUpRequest();
-  const {email, password} = this.state;
-  Auth.signUp({
-    username: email,
-    password: password,
-    attributes: {
-      given_name,
-      email,
-      birthdate,
-      gender,
-    },
-  });
+signUpMethod = (username, email, password, given_name, birthdate, gender) => {
+  try {
+    configureStore.dispatch(handleSignUpRequest());
+    Auth.signUp({
+      username: email,
+      password,
+      attributes: {
+        given_name,
+        email,
+        birthdate,
+        gender,
+      },
+    })
+      .then(() => this.setState({modalVisible: true}))
+      .catch((err) => console.log(err));
+  } finally {
+    configureStore.dispatch(handleSignUpSuccess());
+  }
 };
-
 export default signUpMethod;
