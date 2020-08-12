@@ -30,7 +30,7 @@ export const userReducer = (state = initialState, action) => {
         birthdate: action.payload,
         email: 'test@gmail.com',
         gender: 'male',
-        modalVisible: false, */
+         */
       };
     case HANDLE_SIGNUP_ERROR:
       return {
@@ -42,7 +42,6 @@ export const userReducer = (state = initialState, action) => {
         birthdate: null,
         email: null,
         gender: null,
-        modalVisible: false, //hide loading indicator
       };
     case HANDLE_SIGNUP_REQUEST:
       return {
