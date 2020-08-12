@@ -7,7 +7,8 @@ import {
 import configureStore from './redux/user/Store';
 
 signUpMethod = (username, email, password, given_name, birthdate, gender) => {
-  return async (dispatch) => {
+  async (dispatch) => {
+    console.log('this worked');
     dispatch(handleSignUpRequest());
     try {
       console.log('anything');
