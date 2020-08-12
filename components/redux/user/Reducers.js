@@ -5,35 +5,57 @@ import {
 } from './ActionTypes';
 
 const initialState = {
-  username: '',
-  given_name: '',
-  password: '',
-  confirmPassword: '',
-  birthdate: '',
-  email: '',
-  gender: '',
-  confirmationCode: '',
-  modalVisible: false,
+  user: {
+    username: null,
+    given_name: null,
+    password: null,
+    confirmPassword: null,
+    birthdate: null,
+    email: null,
+    gender: null,
+    confirmationCode: null,
+    modalVisible: false,
+  },
 };
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case HANDLE_SIGNUP_SUCCESS:
       return {
-        ...state,
-        username: '',
-        given_name: '',
-        password: '',
-        confirmPassword: '',
-        birthdate: '',
-        email: '',
-        gender: '',
-        modalVisible: false,
+        ...state.user,
+        /* username: action.payload.value,
+        given_name: action.payload.value,
+        password: action.payload,
+        confirmPassword: action.payload,
+        birthdate: action.payload,
+        email: 'test@gmail.com',
+        gender: 'male',
+        modalVisible: false, */
       };
     case HANDLE_SIGNUP_ERROR:
-      return {...state};
+      return {
+        ...state.user,
+        username: null,
+        given_name: null,
+        password: null,
+        confirmPassword: null,
+        birthdate: null,
+        email: null,
+        gender: null,
+        modalVisible: false, //hide loading indicator
+      };
     case HANDLE_SIGNUP_REQUEST:
-      return {...state};
+      return {
+        username: null,
+        given_name: null,
+        password: null,
+        confirmPassword: null,
+        birthdate: null,
+        email: null,
+        gender: null,
+        ...state.user,
+      };
+    default:
+      return state.user;
   }
-  return state;
 };
