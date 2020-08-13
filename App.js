@@ -11,24 +11,12 @@ import awsconfig from './aws-exports';
 
 import configureStore from './components/redux/user/Store';
 
-//import {userReducer} from './components/redux/user/Reducers';
-
 Amplify.configure(awsconfig);
-
-// console.log({store});
-// console.log({configureStore});
-// console.log('store configured');
 
 const store = configureStore;
 
 class App extends React.Component {
-  // state = {isAuthenticated: false};
-  // authenticate = (isAuthenticated) => {
-  // this.setState({isAuthenticated});
-  //console.log('is authenticated');
-  //};
   render() {
-    // if (this.state.isAuthenticated)
     return (
       <Provider store={store}>
         <NavigationContainer>
@@ -36,7 +24,6 @@ class App extends React.Component {
         </NavigationContainer>
       </Provider>
     );
-    //console.log('store was read');
   }
 }
 const styles = StyleSheet.create({});

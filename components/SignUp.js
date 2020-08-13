@@ -73,12 +73,10 @@ class SignUp extends React.Component {
     Auth.confirmSignUp(email, confirmationCode, {})
       .then(() => {
         this.setState({modalVisible: false});
-        console.log('modal is false');
         this.props.navigation.navigate('SignIn');
         console.log('navigated to sign in');
       })
       .catch((err) => console.log(err));
-    console.log('received error');
   };
 
   render() {
@@ -213,4 +211,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
-//console.log('state connected');

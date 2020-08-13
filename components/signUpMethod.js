@@ -18,7 +18,7 @@ signUpMethod = (
 ) => {
   try {
     configureStore.dispatch(handleSignUpRequest());
-    console.log('anything');
+    
     console.log('Username is', username, 'Email', email);
     Auth.signUp({
       username: email,

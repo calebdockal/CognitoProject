@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-//function Profile({navigation})
 export default class Profile extends Component {
   render() {
     return (
@@ -71,7 +70,7 @@ export default class Profile extends Component {
             }}>
             <Text
               style={{fontWeight: '900', fontSize: 24, alignSelf: 'center'}}>
-              John Doe
+              JOHN DOE
             </Text>
             <Text style={{marginBottom: 5}}>John.Doe@email.com</Text>
           </View>
