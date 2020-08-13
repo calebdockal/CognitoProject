@@ -16,18 +16,20 @@ const initialState = {
 };
 
 export const userReducer = (state = initialState, action) => {
+  console.log(action.payload);
   switch (action.type) {
     case HANDLE_SIGNUP_SUCCESS:
       return {
         ...state,
-        username: action.payload.value,
-        given_name: action.payload.value,
-        password: action.payload.value,
-        confirmPassword: action.payload.value,
-        birthdate: action.payload.value,
-        email: action.payload.value,
-        gender: action.payload.value,
+        username: action.payload.username,
+        given_name: action.payload.given_name,
+        password: action.payload.password,
+        confirmPassword: action.payload.password,
+        birthdate: action.payload.birthdate,
+        email: action.payload.email,
+        gender: action.payload.gender,
       };
+
     case HANDLE_SIGNUP_ERROR:
       return {
         ...state,

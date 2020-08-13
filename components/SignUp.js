@@ -54,12 +54,8 @@ class SignUp extends React.Component {
         }
       },
     );
-    // this.props.handleRequest(); //resets all values
-    // this.props.handleSuccess(); //sets some values
-    // this.props.handleError(); //resets all values
 
-    //prints the current value of redux store after changing its state
-    console.log('Current state - ', this.props.user);
+    console.log('Current state - ', this.props.state);
   };
 
   onChangeText(key, value) {
@@ -204,7 +200,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    state: state,
   };
 };
 
