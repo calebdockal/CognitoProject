@@ -5,36 +5,32 @@ import {
 } from './ActionTypes';
 
 const initialState = {
-  user: {
-    username: null,
-    given_name: null,
-    password: null,
-    confirmPassword: null,
-    birthdate: null,
-    email: null,
-    gender: null,
-    confirmationCode: null,
-    modalVisible: false,
-  },
+  username: null,
+  given_name: null,
+  password: null,
+  confirmPassword: null,
+  birthdate: null,
+  email: null,
+  gender: null,
+  confirmationCode: null,
 };
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case HANDLE_SIGNUP_SUCCESS:
       return {
-        ...state.user,
-        /* username: action.payload.value,
+        ...state,
+        username: action.payload.value,
         given_name: action.payload.value,
-        password: action.payload,
-        confirmPassword: action.payload,
-        birthdate: action.payload,
-        email: 'test@gmail.com',
-        gender: 'male',
-         */
+        password: action.payload.value,
+        confirmPassword: action.payload.value,
+        birthdate: action.payload.value,
+        email: action.payload.value,
+        gender: action.payload.value,
       };
     case HANDLE_SIGNUP_ERROR:
       return {
-        ...state.user,
+        ...state,
         username: null,
         given_name: null,
         password: null,
@@ -52,9 +48,9 @@ export const userReducer = (state = initialState, action) => {
         birthdate: null,
         email: null,
         gender: null,
-        ...state.user,
+        ...state,
       };
     default:
-      return state.user;
+      return {...state};
   }
 };

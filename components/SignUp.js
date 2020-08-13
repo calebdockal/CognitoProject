@@ -43,11 +43,16 @@ class SignUp extends React.Component {
   onSignUpHandler = () => {
     signUpMethod(
       this.state.username,
-      this.state.password,
-      this.state.birthdate,
       this.state.email,
-      this.state.gender,
+      this.state.password,
       this.state.given_name,
+      this.state.birthdate,
+      this.state.gender,
+      (success) => {
+        if (success === true) {
+          this.setState({modalVisible: true});
+        }
+      },
     );
     // this.props.handleRequest(); //resets all values
     // this.props.handleSuccess(); //sets some values
