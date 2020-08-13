@@ -13,8 +13,6 @@ import {Auth} from 'aws-amplify';
 import {Input, Button} from 'react-native-elements';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import signUpMethod from './signUpMethod';
-//import {handleSignUp} from './redux/user/Actions';
-//import {Provider} from 'react-redux';
 
 import {
   handleSignUpRequest,

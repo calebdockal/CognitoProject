@@ -3,7 +3,6 @@ import {
   HANDLE_SIGNUP_ERROR,
   HANDLE_SIGNUP_REQUEST,
 } from './ActionTypes';
-import {Auth} from 'aws-amplify';
 import 'crypto-js/lib-typedarrays';
 import 'amazon-cognito-identity-js';
 
